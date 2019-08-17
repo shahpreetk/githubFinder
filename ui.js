@@ -32,6 +32,8 @@ class UI {
                 }
                 // SHOW ALERT MESSAGE
                 showAlert(message,className){
+                    // CLEAR ANY REMAINING ALERTS
+                    this.clearAlert();
                     // CREATE DIV
                     const div = document.createElement('div');
                     // ADD CLASSES
@@ -44,6 +46,17 @@ class UI {
                     const search=document.querySelector('.search');
                     // INSERT ALERT
                     container.insertBefore(div,search);
+                    // TIMEOUT AFTER 3 SECONDS
+                    setTimeout(()=>{
+                        this.clearAlert();
+                    },3000);
+                }
+                // CLEAR ALERT MESSAGE
+                clearAlert(){
+                    const currentAlert=document.querySelector('.alert');
+                    if(currentAlert){
+                        currentAlert.remove();
+                    }
                 }
                 // CLEAR PROFILE
                 clearProfile(){
